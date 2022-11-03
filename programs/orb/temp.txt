@@ -1,0 +1,28 @@
+
+alice stakes 1 sol and gets 0.9 msol (our contract now has 0.9 msol )
+
+assuming 10% rewards
+
+after 1 year our 0.9 msol is now 1.1 sol
+
+
+
+now bob stakes 2 sol and gets 1.6 msol(price is roughly 1 sol -> 0.8 msol) (our contract now has 2.5 msol )
+
+after 1 year our 2.5 msol is now 2.75 sol
+
+
+now let's say we're taking our fee now:
+
+How to calculate total rewards? 
+
+
+
+
+
+
+
+
+
+
+

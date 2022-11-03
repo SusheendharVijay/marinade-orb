@@ -8,8 +8,41 @@ orb = "FtoHTcr7Khzp7DcYSEDw5QN2pFYbMipohBsGcNjrqRZ7"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 wallet = "/Users/sushi/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+
+[test.validator]
+url = "https://api.mainnet-beta.solana.com"
+slots_per_epoch = "32"
+
+
+[test]
+startup_wait = 10000
+
+
+
+[[test.genesis]]
+address = "MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD"
+program = "tests/fixtures/marinade.so"
+
+[[test.validator.clone]]
+ address = "8szGkuLTAux9XMgZ2vtY39jVSowEcpBfFfD8hXSEqdGC"
+
+[[test.validator.clone]]
+ address = "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So"
+
+[[test.validator.clone]]
+ address = "7GgPYjS5Dza89wV6FpZ23kUJRG5vbQ1GM25ezspYFSoE"
+
+[[test.validator.clone]]
+ address = "8ZUcztoAEhpAeC2ixWewJKQJsSUGYSGPVAjkhDJYf5Gd"
+
+[[test.validator.clone]]
+ address = "UefNb6z6yvArqe4cJHTXCqStRsKmWhGxnZzuHbikP5Q"
+
+[[test.validator.clone]]
+ address = "LPmSozJJ8Jh69ut2WP3XmVohTjL4ipR18yiCzxrUmVj"
