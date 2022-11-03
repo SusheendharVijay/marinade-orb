@@ -20,7 +20,6 @@ import {
 import { prisma } from "../../server/db/client";
 import { getProgram } from "../../utils/programUtils";
 import { getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
-import { use } from "chai";
 
 const DepositSchema = z.object({
   amount: z.number().positive(),
