@@ -28,8 +28,8 @@ pub mod orb {
         instructions::deposit_user(ctx, lamports)
     }
 
-    pub fn take_fee(ctx: Context<TakeFee>, new_price: u64) -> Result<()> {
-        instructions::take_fee(ctx, new_price)
+    pub fn take_fee(ctx: Context<TakeFee>) -> Result<()> {
+        instructions::take_fee(ctx)
     }
 
     pub fn defund(ctx: Context<Defund>, lamports: u64) -> Result<()> {

@@ -46,3 +46,6 @@ program = "tests/fixtures/marinade.so"
 
 [[test.validator.clone]]
  address = "LPmSozJJ8Jh69ut2WP3XmVohTjL4ipR18yiCzxrUmVj"
+
+[workspace]
+types = "app/src/utils/"

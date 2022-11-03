@@ -1,8 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{
-    associated_token::AssociatedToken,
-    token::{burn, transfer, Burn, Mint, Token, TokenAccount, Transfer},
-};
+use anchor_spl::token::{burn, transfer, Burn, Mint, Token, TokenAccount, Transfer};
 use marinade_cpi::State;
 
 use crate::{calc::proportional, error::OrbError, state::OrbState, ORB_SEED};

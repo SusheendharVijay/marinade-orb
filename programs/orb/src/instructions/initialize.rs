@@ -39,7 +39,7 @@ pub struct Initialize<'info> {
     #[account(init, seeds=[b"sol_pool"], bump, payer=payer, space= 8 + Pool::MAX_SIZE)]
     pub sol_pool_pda: Account<'info, Pool>,
     // The program's msol token account
-    #[account(init,payer=payer, associated_token::mint=msol_mint, associated_token::authority=orb_pda)]
+    #[account(init_if_needed,payer=payer, associated_token::mint=msol_mint, associated_token::authority=orb_pda)]
     pub msol_account: Box<Account<'info, TokenAccount>>,
     #[account(init, payer=payer, mint::decimals=9, mint::authority=orb_pda.key())]
     pub psol_mint: Box<Account<'info, Mint>>,

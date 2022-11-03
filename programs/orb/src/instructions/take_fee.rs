@@ -3,11 +3,10 @@ use anchor_spl::token::{transfer, Mint, Token, TokenAccount, Transfer};
 use marinade_cpi::State;
 
 use crate::{
-    error::OrbError, marinade_state_utils::calc_msol_from_lamports, program::Orb, state::OrbState,
-    ORB_SEED,
+    error::OrbError, marinade_state_utils::calc_msol_from_lamports, state::OrbState, ORB_SEED,
 };
 
-pub fn take_fee(ctx: Context<TakeFee>, new_price: u64) -> Result<()> {
+pub fn take_fee(ctx: Context<TakeFee>) -> Result<()> {
     require_gt!(
         ctx.accounts.clock.epoch,
         ctx.accounts.state.current_epoch,
@@ -23,9 +22,9 @@ pub fn take_fee(ctx: Context<TakeFee>, new_price: u64) -> Result<()> {
 
     msg!("Current price: {}", ctx.accounts.state.current_msol_price);
 
-    // let new_msol_price = ctx.accounts.marinade_state.msol_price;
+    let new_msol_price = ctx.accounts.marinade_state.msol_price;
     // TESTING
-    let new_msol_price = new_price;
+    // let new_msol_price = new_price;
 
     msg!("new price: {}", ctx.accounts.marinade_state.msol_price);
 
