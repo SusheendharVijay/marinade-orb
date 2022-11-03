@@ -45,7 +45,7 @@ const deposit = async (req: NextApiRequest, res: NextApiResponse) => {
       userPk
     );
 
-    const tx = await program.methods
+    const ix = await program.methods
       .depositUser(new anchor.BN(amount * LAMPORTS_PER_SOL))
       .accounts({
         solPoolPda: poolPda,
@@ -65,10 +65,22 @@ const deposit = async (req: NextApiRequest, res: NextApiResponse) => {
         userPsolAccount: userPsolAccount.address,
         clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
       })
-      .signers([payer])
-      .rpc();
+      // .signers([payer])
+      .instruction();
 
-    res.status(200).json({ success: true, tx });
+    const txn = new anchor.web3.Transaction().add(ix);
+
+    txn.feePayer = userPk;
+    const blockHashObj = await connection.getLatestBlockhash();
+    txn.recentBlockhash = blockHashObj.blockhash;
+    const serializedJson = txn
+      .serialize({
+        requireAllSignatures: false,
+        verifySignatures: true,
+      })
+      .toJSON();
+
+    res.status(200).json({ success: true, serialized: serializedJson.data });
   } catch (error) {
     console.log(error);
     res.status(400).json({ success: false, error });
