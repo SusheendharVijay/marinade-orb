@@ -58,7 +58,7 @@ const defund = async (req: NextApiRequest, res: NextApiResponse) => {
         msolAccount: state.msolAccount,
         msolMint: msolMint,
         orbPda,
-        user: payer.publicKey,
+        user: userPk,
         state: orbState,
         psolMint: state.psolMint,
         marinadeState,

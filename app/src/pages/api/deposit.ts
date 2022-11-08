@@ -52,7 +52,7 @@ const deposit = async (req: NextApiRequest, res: NextApiResponse) => {
         msolAccount: state.msolAccount,
         msolMint: msolMint,
         orbPda,
-        transferFrom: payer.publicKey,
+        transferFrom: userPk,
         state: orbState,
         psolMint: state.psolMint,
         marinadeState,
