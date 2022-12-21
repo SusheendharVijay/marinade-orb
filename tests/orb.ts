@@ -197,6 +197,7 @@ describe("orb", () => {
         console.log(e);
       }
     });
+
     it("It takes fee", async () => {
       console.log("waiting for next slot...");
       // excuse the terrible testing method
@@ -236,7 +237,7 @@ describe("orb", () => {
 
         const tx = await program.methods
           // price change is added
-          .takeFee(new anchor.BN(4605577788 + 700000))
+          .takeFee()
           .accounts({
             msolAccount,
             msolMint: msolMint,

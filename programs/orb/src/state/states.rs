@@ -106,6 +106,7 @@ mod test {
             fee_rate: 0,
             bump: 0,
         };
+
         // balance before is 10_000
         state
             .update_epoch_msol(1, 100, 1000 * LAMPORTS_PER_SOL)
@@ -122,7 +123,7 @@ mod test {
             .calculate_fee(10_300, 1002 * LAMPORTS_PER_SOL, 15)
             .unwrap();
 
-        let real_fee = ((10_300 as u64).saturating_sub(100) * 15 * 2) / 100;
+        let real_fee = ((10_300_u64).saturating_sub(100) * 15 * 2) / 100;
         assert_eq!(fee, real_fee);
     }
 

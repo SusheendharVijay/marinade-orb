@@ -43,7 +43,7 @@ pub fn take_fee(ctx: Context<TakeFee>) -> Result<()> {
     msg!("msol balance: {}", ctx.accounts.msol_account.amount);
 
     transfer(
-        ctx.accounts.into_transfer_ctx().with_signer(signer_seeds),
+        ctx.accounts.to_transfer_ctx().with_signer(signer_seeds),
         fee_msol,
     )?;
 
@@ -84,7 +84,7 @@ pub struct TakeFee<'info> {
 }
 
 impl<'info> TakeFee<'info> {
-    pub fn into_transfer_ctx(&self) -> CpiContext<'_, '_, '_, 'info, Transfer<'info>> {
+    pub fn to_transfer_ctx(&self) -> CpiContext<'_, '_, '_, 'info, Transfer<'info>> {
         let cpi_call = Transfer {
             from: self.msol_account.to_account_info().clone(),
             to: self.treasury_msol_account.to_account_info().clone(),
